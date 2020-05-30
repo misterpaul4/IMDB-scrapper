@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'open-uri'
+require 'httparty'
 
 class SiteObj
   attr_accessor :site
@@ -9,7 +9,8 @@ class SiteObj
   end
 
   def site_obj
-    Nokogiri::HTML.parse(open(site))
+    response = HTTParty.get(site)
+    Nokogiri::HTML.parse(response.body)
   end
 
   def css_selector(selector)
