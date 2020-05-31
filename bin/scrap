@@ -1,36 +1,38 @@
 #!/usr/bin/env ruby
 require_relative '../lib/site_obj.rb'
 def popular_mv_scrap
-  link = SiteObj.new("https://www.imdb.com/chart/moviemeter/?ref_=nv_mv_mpm")
-  titles = link.selector(".lister .titleColumn a")
-  ratings = link.selector(".lister .imdbRating")
-  release_dates = link.selector(".lister .titleColumn span")
+  link = SiteObj.new('https://www.imdb.com/chart/moviemeter/?ref_=nv_mv_mpm')
+  titles = link.selector('.lister .titleColumn a')
+  ratings = link.selector('.lister .imdbRating')
+  release_dates = link.selector('.lister .titleColumn span')
 
   [titles, ratings, release_dates]
 end
 
-def store_data
+def store_data(lists)
   dict = {}
   index = 1
-  movie_titles = popular_mv_scrap[0]
-  movie_ratings = popular_mv_scrap[1]
-  movie_release_dates = popular_mv_scrap[2]
+  movie_titles = lists[0]
+  movie_ratings = lists[1]
+  # movie_release_dates = lists[2]
   movie_titles.each do |movie|
-    dict[index] = [movie.text, movie_ratings[index-1].text.strip]
-    index+=1
+    dict[index] = [movie.text, movie_ratings[index - 1].text.strip]
+    index += 1
   end
   dict # hash container index as keys, movie title, ratings and year as values
 end
 
-def disp_table
-  puts "S/N" + " "*5 + "Movie Title"
-  puts "="*50
+def disp_table(to_disp)
+  puts 'S/N' + '  Movie Title'
+  puts '=' * 50
 
-  store_data.each do |key, value|
-    puts "#{key}" + " "*(5-key.to_s.length)  + "#{value[0]}"
-    puts " "*(key.to_s.length + (5-key.to_s.length)) + "imdbRating" + "  =>  " + "#{value[1]}"
+  store_data(to_disp).each do |key, value|
+    rating = value[1].to_s
+    rating = 'no ratings' if value[1].to_s.empty?
+    puts key.to_s + ' ' * (5 - key.to_s.length) + (value[0]).to_s
+    puts ' ' * (key.to_s.length + (5 - key.to_s.length)) + 'imdbRating' + '   =>  ' + rating
     puts "\n"
   end
- end
+end
 
-disp_table
+disp_table(popular_mv_scrap)
