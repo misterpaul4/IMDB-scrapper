@@ -13,7 +13,7 @@ class SiteObj
     Nokogiri::HTML.parse(response.body)
   end
 
-  def css_selector(selector)
-    site_obj.css(selector)
+  def selector(css_selector)
+    site_obj.css(css_selector)
   end
 end
