@@ -7,7 +7,7 @@ def popular_mv_scrap
   release_obj = link.selector('.lister-list tr .titleColumn')
   release_dates = []
   release_obj.each do |item|
-    release_dates.push((/\(\d\d\d\d\)/.match(item.text.to_s.strip)).to_s)
+    release_dates.push(/\(\d\d\d\d\)/.match(item.text.to_s.strip).to_s)
   end
   [titles, ratings, release_dates]
 end
@@ -41,6 +41,4 @@ def disp_table(to_disp)
   end
 end
 
-
 disp_table(popular_mv_scrap)
-# store_data(popular_mv_scrap)
