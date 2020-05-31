@@ -55,6 +55,24 @@ def disp_table(to_disp)
   end
 end
 
-disp_table(popular_mv_scrap)
-puts "\n\n\n\n"
-disp_table(popular_tv_show_scrap)
+def scrapp
+  puts 'Table to display'
+  puts '(1) MOST POPULAR MOVIES' + ' ' * 8 + "(2) MOST POPULAR TV SHOWS\n\n"
+  choice = gets.chomp
+  system('clear')
+  if choice.eql? '1'
+    puts 'MOST POPULAR MOVIES'
+    disp_table(popular_mv_scrap)
+  elsif choice.eql? '2'
+    puts 'MOST POPULAR TV SHOW'
+    disp_table(popular_tv_show_scrap)
+  else
+    puts 'MOST POPULAR MOVIES'
+    disp_table(popular_mv_scrap)
+    puts '\n\n'
+    puts 'MOST POPULAR TV SHOW'
+    disp_table(popular_tv_show_scrap)
+  end
+end
+
+scrapp
