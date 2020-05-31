@@ -1,49 +1,28 @@
 #!/usr/bin/env ruby
-require_relative '../lib/site_obj.rb'
-def popular_mv_scrap
-  link = SiteObj.new('https://www.imdb.com/chart/moviemeter/?ref_=nv_mv_mpm')
-  titles = link.selector('.lister .titleColumn a')
-  ratings = link.selector('.lister .imdbRating')
-  release_obj = link.selector('.lister-list tr .titleColumn')
-  release_dates = extract_date(release_obj)
-  [titles, ratings, release_dates]
-end
+require_relative '../lib/imdb_popular_charts.rb'
 
-def popular_tv_show_scrap
-  link = SiteObj.new('https://www.imdb.com/chart/tvmeter/?ref_=nv_tvv_mptv')
-  titles = link.selector('.lister .titleColumn a')
-  ratings = link.selector('.lister .imdbRating')
-  release_obj = link.selector('.lister-list tr .titleColumn')
-  release_dates = extract_date(release_obj)
-  [titles, ratings, release_dates]
-end
+def to_disp(choice)
+  chart = Charts.new
 
-def extract_date(nk_obj)
-  dates = []
-  nk_obj.each do |item|
-    dates.push(/\(\d\d\d\d\)/.match(item.text.to_s.strip).to_s)
+  if choice.eql? '1'
+    puts 'MOST POPULAR MOVIES'
+    print_chart(chart.popular_mv_scrap, chart)
+  elsif choice.eql? '2'
+    puts 'MOST POPULAR TV SHOW'
+    print_chart(chart.popular_tv_show_scrap, chart)
+  else
+    puts 'MOST POPULAR MOVIES'
+    print_chart(chart.popular_mv_scrap, chart)
+    puts "\n\n"
+    puts 'MOST POPULAR TV SHOW'
+    print_chart(chart.popular_tv_show_scrap, chart)
   end
-  dates
 end
 
-def store_data(lists)
-  dict = {}
-  index = 1
-  movie_titles = lists[0]
-  movie_ratings = lists[1]
-  movie_release_dates = lists[2]
-  movie_titles.each do |movie|
-    dict[index] = [movie.text, movie_ratings[index - 1].text.strip, movie_release_dates[index - 1]]
-    index += 1
-  end
-  dict # hash containing index as keys, movie title, ratings and year as values
-end
-
-def disp_table(to_disp)
-  puts 'S/N' + '  Movie'
+def print_chart(opt, chart_obj)
   puts '=' * 50
 
-  store_data(to_disp).each do |key, value|
+  chart_obj.chart_data(opt).each do |key, value|
     rating = value[1].to_s
     rating = 'no ratings' if value[1].to_s.empty?
     release_date = value[2]
@@ -60,19 +39,7 @@ def scrapp
   puts '(1) MOST POPULAR MOVIES' + ' ' * 8 + "(2) MOST POPULAR TV SHOWS\n\n"
   choice = gets.chomp
   system('clear')
-  if choice.eql? '1'
-    puts 'MOST POPULAR MOVIES'
-    disp_table(popular_mv_scrap)
-  elsif choice.eql? '2'
-    puts 'MOST POPULAR TV SHOW'
-    disp_table(popular_tv_show_scrap)
-  else
-    puts 'MOST POPULAR MOVIES'
-    disp_table(popular_mv_scrap)
-    puts '\n\n'
-    puts 'MOST POPULAR TV SHOW'
-    disp_table(popular_tv_show_scrap)
-  end
+  to_disp(choice)
 end
 
 scrapp
