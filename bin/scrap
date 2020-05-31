@@ -11,13 +11,26 @@ end
 
 def store_data
   dict = {}
-  index = 0
+  index = 1
   movie_titles = popular_mv_scrap[0]
   movie_ratings = popular_mv_scrap[1]
   movie_release_dates = popular_mv_scrap[2]
   movie_titles.each do |movie|
-    dict[index] = [movie.text, movie_ratings[index].text.strip]
+    dict[index] = [movie.text, movie_ratings[index-1].text.strip]
     index+=1
   end
   dict # hash container index as keys, movie title, ratings and year as values
 end
+
+def disp_table
+  puts "S/N" + " "*5 + "Movie Title"
+  puts "="*50
+
+  store_data.each do |key, value|
+    puts "#{key}" + " "*(5-key.to_s.length)  + "#{value[0]}"
+    puts " "*(key.to_s.length + (5-key.to_s.length)) + "imdbRating" + "  =>  " + "#{value[1]}"
+    puts "\n"
+  end
+ end
+
+disp_table
