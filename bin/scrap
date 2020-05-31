@@ -5,11 +5,16 @@ def popular_mv_scrap
   titles = link.selector('.lister .titleColumn a')
   ratings = link.selector('.lister .imdbRating')
   release_obj = link.selector('.lister-list tr .titleColumn')
-  release_dates = []
-  release_obj.each do |item|
-    release_dates.push(/\(\d\d\d\d\)/.match(item.text.to_s.strip).to_s)
-  end
+  release_dates = extract_date(release_obj)
   [titles, ratings, release_dates]
+end
+
+def extract_date(nk_obj)
+  dates = []
+  nk_obj.each do |item|
+    dates.push(/\(\d\d\d\d\)/.match(item.text.to_s.strip).to_s)
+  end
+  dates
 end
 
 def store_data(lists)
