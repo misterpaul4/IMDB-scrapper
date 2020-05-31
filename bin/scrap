@@ -6,16 +6,16 @@ def to_disp(choice)
 
   if choice.eql? '1'
     puts 'MOST POPULAR MOVIES'
-    print_chart(chart.popular_mv_scrap, chart)
+    print_chart(chart.popular_mv, chart)
   elsif choice.eql? '2'
     puts 'MOST POPULAR TV SHOW'
-    print_chart(chart.popular_tv_show_scrap, chart)
+    print_chart(chart.popular_tv_show, chart)
   else
     puts 'MOST POPULAR MOVIES'
-    print_chart(chart.popular_mv_scrap, chart)
+    print_chart(chart.popular_mv, chart)
     puts "\n\n"
     puts 'MOST POPULAR TV SHOW'
-    print_chart(chart.popular_tv_show_scrap, chart)
+    print_chart(chart.popular_tv_show, chart)
   end
 end
 

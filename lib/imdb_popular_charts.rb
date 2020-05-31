@@ -6,12 +6,12 @@ class Charts
     @release_date_raw = '.lister-list tr .titleColumn'
   end
 
-  def popular_mv_scrap
+  def popular_mv
     link = SiteObj.new('https://www.imdb.com/chart/moviemeter/?ref_=nv_mv_mpm')
     [link.selector(@title_selector), link.selector(@rating_selector), extract_date(link.selector(@release_date_raw))]
   end
 
-  def popular_tv_show_scrap
+  def popular_tv_show
     link = SiteObj.new('https://www.imdb.com/chart/tvmeter/?ref_=nv_tvv_mptv')
     [link.selector(@title_selector), link.selector(@rating_selector), extract_date(link.selector(@release_date_raw))]
   end
