@@ -27,7 +27,7 @@ def print_chart(opt, chart_obj)
     rating = 'no ratings' if value[1].to_s.empty?
     release_date = value[2]
     release_date = 'unknown' if value[2].empty?
-    puts key.to_s + ' ' * (5 - key.to_s.length) + 'Title          =>  ' + (value[0]).to_s
+    puts key.to_s + ' ' * (5 - key.to_s.length) + 'Title          =>  ' + value[0]
     puts ' ' * (key.to_s.length + (5 - key.to_s.length)) + 'imdbRating' + '     =>  ' + rating
     puts ' ' * (key.to_s.length + (5 - key.to_s.length)) + 'Release date' + '   =>  ' + release_date
     puts "\n"
