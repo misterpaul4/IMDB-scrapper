@@ -29,7 +29,7 @@ make scrap file executable([link](https://commandercoriander.net/blog/2013/02/16
 `ruby bin/scrap`
 
 ### test
-to run test, manually change the variable rank, title, rating and release_year to reflect the current data for that movie on imdb.
+to run test, manually change the variable rank, title, rating and release_year in the ./spec/imdb_popular_charts_spec.rb file to reflect the current data from imdb.
 `cd` to project directory and run `rspec`
 
 ### site link
