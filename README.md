@@ -28,6 +28,10 @@ make scrap file executable([link](https://commandercoriander.net/blog/2013/02/16
 ### run
 `ruby bin/scrap`
 
+### site link
+* [most popular movies](https://www.imdb.com/chart/moviemeter/?ref_=nv_mv_mpm)
+* [most popular tv shows](https://www.imdb.com/chart/tvmeter/?ref_=nv_tvv_mptv)
+
 ## Authors
 
 👤 **Paul**

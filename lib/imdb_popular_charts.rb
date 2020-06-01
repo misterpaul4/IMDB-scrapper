@@ -31,7 +31,7 @@ class Charts
     movie_ratings = lists[1]
     movie_release_dates = lists[2]
     movie_titles.each do |movie|
-      dict[index] = [movie.text, movie_ratings[index - 1].text.strip, movie_release_dates[index - 1]]
+      dict[index] = [movie.text.downcase, movie_ratings[index - 1].text.strip, movie_release_dates[index - 1]]
       index += 1
     end
     dict # hash containing index as keys, movie title, ratings and year as values
