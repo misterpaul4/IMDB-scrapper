@@ -11,7 +11,10 @@
 
 ## Getting Started
 
-Make sure ruby is installed on your machine. Clone the repository and open terminal in that directory. install dependencies and run. It asks for an option for which table to print. type 1 to print most popular movies. type 2 to print most popular tv shows. Any other input prints both chart
+- Make sure ruby is installed on your machine.
+- Clone the repository and open terminal in that directory.
+- Install dependencies
+- Run. It asks for an option for which table to print. Type 1 to print most popular movies. Type 2 to print most popular tv shows. Any other input prints both chart
 
 ### install dependencies
 
@@ -19,7 +22,7 @@ Make sure ruby is installed on your machine. Clone the repository and open termi
 
 ### make scrap file executable
 
-`cd` to bin directory
+`cd` to bin directory and
 make scrap file executable([link](https://commandercoriander.net/blog/2013/02/16/making-a-ruby-script-executable/))
 
 ### run
