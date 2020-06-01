@@ -9,9 +9,36 @@
 
 - Ruby 2.6
 
-## Live Demo
-
 ## Getting Started
-Make sure ruby is installed on your machine. Clone the repository and open terminal in that directory.
 
- `ruby bin/scrap`
+Make sure ruby is installed on your machine. Clone the repository and open terminal in that directory. install dependencies and run. It asks for an option for which table to print. type 1 to print most popular movies. type 2 to print most popular tv shows. Any other input prints both chart
+
+### install dependencies
+
+`bundle install`
+
+### make scrap file executable
+
+`cd` to bin directory
+make scrap file executable([link](https://commandercoriander.net/blog/2013/02/16/making-a-ruby-script-executable/))
+
+### run
+`ruby bin/scrap`
+
+## Authors
+
+👤 **Paul**
+
+- Github: [@misterpaul4](https://github.com/misterpaul4)
+- Twitter: [@paulajuze](https://twitter.com/paulajuze)
+- Linkedin: [Chukwuebuka Paul Ajuizeogu](https://www.linkedin.com/in/chukwuebuka-paul-ajuizeogu/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
