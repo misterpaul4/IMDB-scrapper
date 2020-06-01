@@ -37,6 +37,7 @@ end
 def scrapp
   puts 'Table to display'
   puts '(1) MOST POPULAR MOVIES' + ' ' * 8 + "(2) MOST POPULAR TV SHOWS\n\n"
+  print '> '
   choice = gets.chomp
   system('clear')
   to_disp(choice)
