@@ -8,7 +8,7 @@ describe Charts do
       rating = 6.8
       release_year = 2019
 
-      current = [title.downcase, rating.to_s, "(#{release_year.to_s})"]
+      current = [title.downcase, rating.to_s, "(#{release_year})"]
       dict_data = chart.chart_data(chart.popular_mv)
       selected = dict_data[rank]
       expect(selected).to eql(current)
@@ -20,7 +20,7 @@ describe Charts do
       rating = 6.2
       release_year = 2020
 
-      current = [title.downcase, rating.to_s, "(#{release_year.to_s})"]
+      current = [title.downcase, rating.to_s, "(#{release_year})"]
       dict_data = chart.chart_data(chart.popular_tv_show)
       selected = dict_data[rank]
       expect(selected).to eql(current)
