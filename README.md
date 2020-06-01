@@ -11,4 +11,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://repl.it/@misterpaul4/imdb-most-popular-chart-scrapper)
+## Getting Started
+Make sure ruby is installed on your machine. Clone the repository and open terminal in that directory.
+
+ `ruby bin/scrap`
