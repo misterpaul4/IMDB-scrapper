@@ -34,6 +34,6 @@ class Charts
       dict[index] = [movie.text.downcase, movie_ratings[index - 1].text.strip, movie_release_dates[index - 1]]
       index += 1
     end
-    dict # hash containing index as keys, movie title, ratings and year as values
+    dict # hash containing rank as keys, movie title, ratings and realsyear as values
   end
 end
