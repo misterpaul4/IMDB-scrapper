@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'httparty'
 
 class SiteObj
-  attr_accessor :site
+  attr_reader :site
 
   def initialize(site)
     @site = site

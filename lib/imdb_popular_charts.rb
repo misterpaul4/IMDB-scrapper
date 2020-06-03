@@ -16,14 +16,6 @@ class Charts
     [link.selector(@title_selector), link.selector(@rating_selector), extract_date(link.selector(@release_date_raw))]
   end
 
-  def extract_date(nk_obj)
-    dates = []
-    nk_obj.each do |item|
-      dates.push(/\(\d\d\d\d\)/.match(item.text.to_s.strip).to_s)
-    end
-    dates
-  end
-
   def chart_data(lists)
     dict = {}
     index = 1
@@ -35,5 +27,15 @@ class Charts
       index += 1
     end
     dict # hash containing rank as keys, movie title, ratings and realsyear as values
+  end
+
+  private
+
+  def extract_date(nk_obj)
+    dates = []
+    nk_obj.each do |item|
+      dates.push(/\(\d\d\d\d\)/.match(item.text.to_s.strip).to_s)
+    end
+    dates
   end
 end
