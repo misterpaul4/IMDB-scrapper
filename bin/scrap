@@ -1,1 +1,46 @@
 #!/usr/bin/env ruby
+require_relative '../lib/imdb_popular_charts.rb'
+
+def to_disp(choice)
+  chart = Charts.new
+
+  if choice.eql? '1'
+    puts 'MOST POPULAR MOVIES'
+    print_chart(chart.popular_mv, chart)
+  elsif choice.eql? '2'
+    puts 'MOST POPULAR TV SHOW'
+    print_chart(chart.popular_tv_show, chart)
+  else
+    puts 'MOST POPULAR MOVIES'
+    print_chart(chart.popular_mv, chart)
+    puts "\n\n"
+    puts 'MOST POPULAR TV SHOW'
+    print_chart(chart.popular_tv_show, chart)
+  end
+end
+
+def print_chart(opt, chart_obj)
+  puts '=' * 50
+
+  chart_obj.chart_data(opt).each do |key, value|
+    rating = value[1].to_s
+    rating = 'no ratings' if value[1].to_s.empty?
+    release_date = value[2]
+    release_date = 'unknown' if value[2].empty?
+    puts key.to_s + ' ' * (5 - key.to_s.length) + 'Title          =>  ' + value[0]
+    puts ' ' * (key.to_s.length + (5 - key.to_s.length)) + 'imdbRating' + '     =>  ' + rating
+    puts ' ' * (key.to_s.length + (5 - key.to_s.length)) + 'Release date' + '   =>  ' + release_date
+    puts "\n"
+  end
+end
+
+def scrapp
+  puts 'Table to display'
+  puts '(1) MOST POPULAR MOVIES' + ' ' * 8 + "(2) MOST POPULAR TV SHOWS\n\n"
+  print '> '
+  choice = gets.chomp
+  system('clear')
+  to_disp(choice)
+end
+
+scrapp
